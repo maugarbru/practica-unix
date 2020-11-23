@@ -15,7 +15,7 @@ function verMenu() {
 
 while true; do
     echo "------------------------------------------------------"
-    echo "---      Práctica final de Sistemas Operativos     ---"
+    echo "---      Practica final de Sistemas Operativos     ---"
     echo "---      Hecho por Mauricio Garzon Brunal          ---"
     echo "------------------------------------------------------"
     verMenu
@@ -23,7 +23,7 @@ while true; do
     
     while [[ ! " ${OPCIONES[@]} " =~ " ${eleccion_usuario} " ]]; do
         echo "------------------------------------------------------"
-        echo "- La opción escogida $eleccion_usuario no es válida  -"
+        echo "- La opcion escogida $eleccion_usuario no es valida  -"
         echo "------------------------------------------------------"
         verMenu
         read eleccion_usuario

@@ -27,14 +27,14 @@ while true; do
     
     while [[ ! " ${OPCIONES[@]} " =~ " ${eleccion_usuario} " ]]; do
         echo "------------------------------------------------------"
-        echo "- La opción escogida $eleccion_usuario no es válida  -"
+        echo "- La opcion escogida $eleccion_usuario no es valida  -"
         echo "------------------------------------------------------"
         verMenu
         read eleccion_usuario
     done
     
     if [[ "$eleccion_usuario" -eq $VER_HORA ]]; then
-        echo "Fecha:"
+        echo "Fecha/Hora actual:"
         date
         echo ""
     fi
