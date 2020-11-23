@@ -24,7 +24,7 @@ function cambiarPermisos() {
     echo "------------------------------------------------------"
     echo "---        CAMBIAR PERSMISOS DE UN USUARIO         ---"
     echo "------------------------------------------------------"
-    ls -l
+    ls -R -l
     echo "Ingrese el NOMBRE del archivo que quiere cambiar los permisos:"
     read nombre_archivo
     echo ""
@@ -94,7 +94,7 @@ function cambiarPermisos() {
     chmod $permiso_usuario$permiso_grupo$permiso_otros $nombre_archivo
     
     echo "OK: Permisos modificados para el archivo $nombre_archivo"
-    ls -l
+    ls -R -l
     echo ""
 }
 
@@ -209,7 +209,7 @@ while true; do
         echo "Ingrese el NOMBRE del directorio a BORRAR: "
         read nombre_directorio
         
-        if test -f $nombre_directorio; then
+        if test -d $nombre_directorio; then
             rm -r $nombre_directorio
             echo "OK: Directorio $nombre_directorio borrado."
             echo ""
