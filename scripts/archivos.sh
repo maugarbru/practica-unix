@@ -71,6 +71,7 @@ while true; do
         fi
     fi
     if [[ "$eleccion_usuario" -eq $MODIFICAR_PERMISOS ]]; then
+        cambiarPermisos
         echo ""
     fi
     if [[ "$eleccion_usuario" -eq $VER_CONTENIDO ]]; then
@@ -145,3 +146,80 @@ while true; do
     
     sleep 2
 done
+
+function cambiarPermisos() {
+    echo "------------------------------------------------------"
+    echo "---        CAMBIAR PERSMISOS DE UN USUARIO         ---"
+    echo "------------------------------------------------------"
+    ls -l
+    echo "Ingrese el NOMBRE del archivo que quiere cambiar los permisos:"
+    read nombre_archivo
+    echo ""
+    
+    if [ ! -f $nombre_archivo ]; then
+        echo "ERROR: Ingrese un nombre de archivo existente."
+        return
+    fi
+    
+    echo "0 PARA DEJAR SIN PERMISO"
+    echo "1 PARA PERMITIR EJECUTAR"
+    echo "2 PARA PERMITIR ESCRIBIR"
+    echo "3 PARA PERMITIR EJECUTAR Y ESCRIBIR"
+    echo "4 PARA PERMITIR LEER"
+    echo "5 PARA PERMITIR LEER Y EJECUTAR"
+    echo "6 PARA PERMITIR LEER Y ESCRIBIR"
+    echo "7 PARA PERMITIR TODAS LAS ACCIONES AL ARCHIVO"
+    
+    while :; do
+        echo "Ingrese el NUMERO del permiso para el USUARIO"
+        read permiso_usuario
+        
+        [[ $permiso_usuario =~ ^[0-9]+$ ]] || {
+            echo "ERROR: Ingrese un NUMERO valido."
+            continue
+        }
+        
+        if ((permiso_usuario >= 0 && permiso_usuario <= 7)); then
+            break
+        else
+            echo "ERROR: El numero $permiso_usuario no es valido."
+        fi
+    done
+    
+    while :; do
+        echo "Ingrese el NUMERO del permiso para el GRUPO"
+        read permiso_grupo
+        
+        [[ $permiso_grupo =~ ^[0-9]+$ ]] || {
+            echo "ERROR: Ingrese un NUMERO valido."
+            continue
+        }
+        
+        if ((permiso_grupo >= 0 && permiso_grupo <= 7)); then
+            break
+        else
+            echo "ERROR: El numero $permiso_grupo no es valido."
+        fi
+    done
+    
+    while :; do
+        echo "Ingrese el NUMERO del permiso para el OTROS usuarios"
+        read permiso_otros
+        
+        [[ $permiso_otros =~ ^[0-9]+$ ]] || {
+            echo -e "INGRESA UN NUMERO VALIDO \n"
+            continue
+        }
+        
+        if ((permiso_otros >= 0 && permiso_otros <= 7)); then
+            break
+        else
+            echo "ERROR: El numero $permiso_otros no es valido."
+        fi
+    done
+    
+    chmod $permiso_usuario$permiso_grupo$permiso_otros $nombre_archivo
+    
+    ls -l
+    echo
+}
