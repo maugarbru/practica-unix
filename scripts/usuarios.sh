@@ -30,12 +30,12 @@ while true; do
     done
     
     if [[ "$eleccion_usuario" -eq $NOMBRE_USUARIOS ]]; then
-        echo "NOMBRES de usuarios conectados actualmente: "
+        echo "OK: NOMBRES de usuarios conectados actualmente: "
         who -us
         echo ""
     fi
     if [[ "$eleccion_usuario" -eq $NUMERO_USUARIOS ]]; then
-        echo "NUMERO de usuarios conectados actualmente: "
+        echo "OK: NUMERO de usuarios conectados actualmente: "
         who -q
         echo ""
     fi

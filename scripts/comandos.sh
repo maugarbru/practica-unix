@@ -34,12 +34,12 @@ while true; do
     done
     
     if [[ "$eleccion_usuario" -eq $VER_HORA ]]; then
-        echo "Fecha/Hora actual:"
+        echo "OK: Fecha/Hora actual:"
         date
         echo ""
     fi
     if [[ "$eleccion_usuario" -eq $VER_RUTA ]]; then
-        echo "Ruta actual:"
+        echo "OK: Ruta actual:"
         pwd
         echo ""
     fi
